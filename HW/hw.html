@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        //Task1
+
+        let a = 1, b = 1, c, d; 
+        c = ++a; 
+        alert(c);  // ответ: 2 
+        //пример 2 
+        d = b++; 
+        alert(d); //ответ: 1 
+        //пример 3 
+        c = 2 + ++a; 
+        alert(c); //ответ: 5 
+        //пример 4 
+        d = 2 + b++;
+        alert(d); //ответ: 4 
+
+        alert(a); //3 
+        alert(b); //3
+        /*"++" прибавляет еденицe к какому-то значению, в первом примере "++" находится перед переменной,
+        из-за чего сначала прибавляется единица, только потом происходит присваивание "а" к "с", во втором примере же все наоборот, но в конечном счете обе переменные равны.(После присваивания "b" к "d" прибавляется единица к "b") */
+
+        //Task 2
+
+        a = 2; 
+        let x = 1 + (a *= 2); //5
+        console.log(x);
+        /*Первым действием выполняется то, что в скобках, "*=" сокращение от умножить и присвоить(а = а * 2), в этом действии получается 4 и + один что за скобками, выходит число 5. */
+
+        //Task 3
+
+        let p = +prompt("Введите число p");
+        let m = +prompt("Введите число m"); 
+
+        if(p >= 0 && m >= 0){
+            alert(p - m);
+        } else if(p <= 0 && m <= 0){
+            alert(p * m);
+        } else{
+            alert(p + m);
+        }
+
+        //Task4
+
+        function getSum(userNumber1, userNumber2, reply){
+            reply = userNumber1 + userNumber2;
+            return reply;
+        }
+
+        function getSub(userNumber1, userNumber2, reply){
+            reply = userNumber1 - userNumber2;
+            return reply;
+        }
+
+        function getMul(userNumber1, userNumber2, reply){
+            reply = userNumber1 * userNumber2;
+            return reply;
+        }
+
+        function getDiv(userNumber1, userNumber2, reply){
+            reply = userNumber1 / userNumber2;
+            return reply;
+        }
+
+
+        let userNumber1 = 6;
+        let userNumber2 = 3;
+        let reply = 0;
+
+        alert(getSum(userNumber1, userNumber2));
+        alert(getSub(userNumber1, userNumber2));
+        alert(getMul(userNumber1, userNumber2));
+        alert(getDiv(userNumber1, userNumber2));
+
+
+        //Task5
+        
+        function getSum(userNumber1, userNumber2, userInput){
+            reply = userNumber1 + userNumber2;
+            return reply;
+        }
+
+        function getSub(userNumber1, userNumber2, userInput){
+            reply = userNumber1 - userNumber2;
+            return reply;
+        }
+
+        function getMul(userNumber1, userNumber2, userInput){
+            reply = userNumber1 * userNumber2;
+            return reply;
+        }
+
+        function getDiv(userNumber1, userNumber2, userInput){
+            reply = userNumber1 / userNumber2;
+            return reply;
+        }
+
+
+        userNumber1 = +prompt("Введите первое число");
+        let userInput = prompt("Введите арифметическую операцию")
+        userNumber2 = +prompt("Введите второе число");
+        reply = 0;
+
+        switch(userInput){
+            case "+":
+                getSum(userNumber1, userNumber2)
+                alert(reply);
+                break;
+            case "-":
+                getSub(userNumber1, userNumber2)
+                alert(reply);
+                break;
+            case "*":
+                getMul(userNumber1, userNumber2)
+                alert(reply);
+                break;
+            case "/":
+                getDiv(userNumber1, userNumber2)
+                alert(reply);
+                break;
+        }
+        
+        //Task 6
+        let money = prompt("Введите сумму денег, которую хотите положить");
+        let lastSymbol = money.slice(-1);
+        if(lastSymbol == 0 || lastSymbol == 5 || lastSymbol == 6 || lastSymbol == 7 || lastSymbol == 8 || lastSymbol == 9 || money == 11 || money == 12 || money == 13 || money == 14){
+            alert(`Ваша сумма в ${money} рублей успешно зачислена.`);
+        } else if(lastSymbol == 2 || lastSymbol == 3 || lastSymbol == 4){
+            alert(`Ваша сумма в ${money} рубля успешно зачислена.`);
+        } else {
+            alert(`Ваша сумма в ${money} рубль успешно зачислена.`);
+        }
+
+        
+    </script>
+</body>
+</html>
