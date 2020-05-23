@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+      
+        // Task 1
+
+        function GetRanks(num){
+            if(num >= 100 && num < 1000){
+                this.units = (num % 100) % 10;
+                this.tens = parseInt((num % 100) / 10);
+                this.hundreds = parseInt(num / 100);
+            } else if(num <= 100 && num < 1000){
+                this.units = (num % 10);
+                this.tens = parseInt(num / 10);
+            } else{
+                console.error("Неверное число");
+                
+            }
+        }
+
+        let number = +prompt("Введите число от 0 до 999");
+        const number1 = new GetRanks(number);
+        console.log(number1);
+
+        // Task 1.1
+
+        //es5
+        function Product(name, price){
+            this.name = name;
+            this.price = price;
+            this.make25PercentDiscount = function(){
+                this.price = this.price * 0.75;
+            };
+        }
+
+        const product1 = new Product("Prod", 200)
+        product1.make25PercentDiscount();
+        console.log(product1);
+
+        //es6
+        class Products {
+            constructor(name, price){
+                this.name = name;
+                this.price = price; 
+            }
+
+            make30PercentDiscount(){
+                this.price = this.price * 0.7;
+            }
+        }
+
+        const product2 = new Products("Product", 200)
+        product2.make30PercentDiscount();
+        console.log(product2);
+
+        // Task 1.2
+
+        //es5
+        function Post(author, text, date){
+            this.author = author;
+            this.text = text;
+            this.date = date;
+            this.edit = function(textAuthor){
+                this.text = textAuthor;
+            };
+        }
+
+        function AttachedPost(author, text, date){
+            Post.call(this, author, text, date);
+            this.highlighted = false;
+            this.makeTextHighlighted = function(){
+                this.highlighted = true;
+            }
+        }
+
+        const person1 = new Post("alex", "Text", "21.12.2020");
+        console.log(person1);
+        person1.edit("Lorem ipsum");
+        console.log(person1);
+
+        const person2 = new AttachedPost("Max", "Text123", "11.01.2020");
+        console.log(person2);
+        person2.edit("Lorem ipsum454r6");
+        person2.makeTextHighlighted();
+        console.log(person2);
+
+        //es6
+        class Post2{
+            constructor(author, text, date){
+                this.author = author;
+                this.text = text;
+                this.date = date;
+                this.edit = function(textAuthor){
+                    this.text = textAuthor;
+                };
+            }
+        }
+
+        class AttachedPost2 extends Post2{
+            constructor(author, text, date){
+                super(author, text, date);
+                this.highlighted = false;
+                this.makeTextHighlighted = function(){
+                    this.highlighted = true;
+                }
+            }
+        }
+
+        const person3 = new Post2("Ivan", "Textdfgdfg", "31.10.2010");
+        console.log(person3);
+        person3.edit("Lorem ipsumfgdgdfgdf");
+        console.log(person3);
+
+        const person4 = new AttachedPost2("Mike", "Text123gdfg", "31.01.2030");
+        console.log(person4);
+        person4.edit("Lorem ipsum454rdfdfg6");
+        person4.makeTextHighlighted();
+        console.log(person4);
+        
+    </script>
+</body>
+</html>

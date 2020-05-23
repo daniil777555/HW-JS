@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+        let MillonGame = {
+            questions: ["5 + 4:", "Зимой и летом одним цветом:", "Вист груша нельзя скушать:", "Музыкант, певец, рассказчик а всего труба да ящик.:", "На одной ноге стоит, в воду пристально глядит. Тычет клювом наугад - ищет в речке лягушат.:"],
+            answersAll: [
+                ["1. 9", "\n 2. 2", "\n 3. 11", "\n 4. 345"],
+                ["1. Кактус", "\n 2. Елка", "\n 3. Карандаш", "\n 4. Земля"],
+                ["1. Боксерская груша", "\n 2. Лампа", "\n 3. Телефон", "\n 4. Груша"],
+                ["1. Барабан", "\n 2. Музыкант", "\n 3. Громофон", "\n 4. Трубец"],
+                ["1. Курица", "\n 2. Цапля", "\n 3. Единорог", "\n 4. Сова"],
+            ],
+            getQuestionAndAnswer: function(){
+                    for(let i = 0; i < this.questions.length; i++){
+                        if(gameBrake == false){
+                            break;
+                        }
+                        var userInput = prompt(this.questions[i] + "\n" + this.answersAll[i]);
+                        this.checkUserAnswer(userInput, i);
+                        this.wantToContinue(i);
+                    }
+                    this.playAgain();
+                
+            },
+            checkUserAnswer: function(userInput, i){
+
+                if(i == 0 && userInput == 1){
+                    rigtAns++;
+                    score *= 5;
+                    alert("Вы угадали. Ваш счет умножен на 5: " + score);
+                    return;
+                    
+                }
+
+                if(i == 1 && userInput == 2){
+                    rigtAns++;
+                    score *= 10;
+                    alert("Вы угадали. Ваш счет умножен на 10: " + score);
+                    return;
+                    
+                }
+
+                if(i == 2 && userInput == 2){
+                    rigtAns++;
+                    score *= 15;
+                    alert("Вы угадали. Ваш счет умножен на 15: " + score);
+                    return;
+                    
+                }
+
+                if(i == 3 && userInput == 3){
+                    rigtAns++;
+                    score *= 20;
+                    alert("Вы угадали. Ваш счет умножен на 20: " + score);
+                    return;
+                    
+                }
+
+                if(i == 4 && userInput == 2){
+                    rigtAns++;
+                    score *= 50;
+                    alert("Вы угадали. Ваш счет умножен на 50: " + score);
+                }
+
+                if(i == (this.questions.length - 1)){
+                    alert("Вы закончили игру со счетом: " + score + " поздравляем");
+                    return;
+                }
+
+                else {
+                    score /= 2;
+                    ++wrongAns;
+                    if(wrongAns < 2){
+                        alert("Вы не угадали. Вы теряете половину очков " + score);
+                    }
+                } 
+
+                if(wrongAns == 2){
+                    alert("Вы все проиграли");
+                    return gameBrake = false;
+                }
+            },
+
+            wantToContinue: function(i){
+                if(wrongAns == 2 || i >= this.questions.length - 1){
+                    return gameBrake = false;
+                }
+                exitOfGame = confirm("Хотите продолжить, или может лучше забрать выйгрыш. Да - продолжить, Нет - закончить");
+                if(exitOfGame == false){
+                    alert("Вы закончили и забрали выигрыш " + score);
+                    return gameBrake = false;
+                }
+            },
+
+            //Для возможности сыграть снова придумал такую функцию, но она не работает, пробовал вызывать ее в разных местах, но нужного результата не добился
+            playAgain: function(){
+                exitOfGame = confirm("Хотите сыграть снова?");
+                if(exitOfGame == true){
+                    MillonGame.getQuestionAndAnswer();//Здесь был this вместо MillonGame, но я подумал что с this будет вызываться функция с параметрами этой функции и по этому вставил MillonGame, но все это  не работает
+                } else {
+                    return gameBrake = false;
+                }
+            }
+            
+        };
+        alert("Ваш начальный счет равен 100, если вы 2 раза не правильно ответите, вы проиграете");
+        let exitOfGame = null;
+        let gameBrake = null;
+        let rigtAns = 0;
+        let wrongAns = 0;
+        let score =  100;
+        MillonGame.getQuestionAndAnswer();
+        console.log(MillonGame)
+
+    </script>
+</body>
+</html>
