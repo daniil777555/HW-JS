@@ -1,0 +1,38 @@
+.modal-window{
+    display: none;
+    position: absolute;
+    z-index: 3;
+    left: 50%;
+    margin: auto;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    padding: 20px;
+    height: 250px;
+    width: 250px;
+    background-color: lawngreen;
+    color: #fff;
+}
+span{
+    cursor: pointer;
+    display: block;
+    text-align: end;
+}
+.products{
+    display: flex;
+}
+
+.product{
+    display: flex;
+    width: 236px;
+    flex-direction: column;
+    margin-right: 40px;
+}
+
+.more-info{
+    cursor: pointer;
+    margin-top: 40px;
+}
+
+.desc{
+    display: none;
+}

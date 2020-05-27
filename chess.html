@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style-chess.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="column-num"></div>
+        <div class="chess-fild"></div>
+        <div class="string-letters"></div>
+    </div>
+    <script>
+        "use strict";
+
+//Я думаю вы порекомендуете сделать все это объектом, и если я прав то, чем лучше будет объект, а не мой вариант?
+
+        function createDivLetters(i){
+            let string = document.querySelector(".string-letters");
+            let stringLetters = document.createElement('div');
+            stringLetters.className = "div-letters";
+            stringLetters.innerText = i;
+            string.prepend(stringLetters);
+
+        }
+
+        function createDivNum(i){
+            let column = document.querySelector(".column-num");
+            let columnNum = document.createElement('div');
+            columnNum.className = "div-num";
+            columnNum.innerText = i;
+            column.prepend(columnNum);
+
+        }
+
+        function createBlackDiv(){
+            let fild = document.querySelector(".chess-fild");
+            let blackDiv = document.createElement('div');
+            blackDiv.className = "black";
+            fild.prepend(blackDiv);
+        }
+
+        function createWhiteDiv(){
+            let fild = document.querySelector(".chess-fild");
+            let whiteDiv = document.createElement('div');
+            whiteDiv.className = "white";
+            fild.prepend(whiteDiv);
+        }
+
+
+        /*
+        Эта функци генерирует строку начиная с белой клетки.
+        */
+        function rowGenerateWhiteStart(){
+            for(let i = 0; i < 8; i++){
+                if(i % 2 == 0){
+                    createBlackDiv();
+                } else{
+                    createWhiteDiv();
+                }
+            }
+        }
+        /*
+        Эта функци генерирует строку начиная с черной клетки.
+        */
+        function rowGenerateBlackStart(){
+            for(let i = 0; i < 8; i++){
+                if(i % 2 == 0){
+                    createWhiteDiv();
+                } else{
+                    createBlackDiv();
+                }
+            }
+        }
+
+        for(let i = 7; i >= 0; i--){
+            let lettersArr = ["A", "B", "C", "D", "E", "F", "G", "H"];
+            createDivLetters(lettersArr[i]);
+        }
+
+        for(let i = 1; i <= 8; i++){
+            createDivNum(i);
+        }
+
+        //Этот цикл будет генерировать поле, используяфункии генерирования строки
+        let colorRow = "black";
+        for(let i = 0; i < 8; i++){
+            if(colorRow == "black"){
+                rowGenerateBlackStart();
+                colorRow = "white";
+            } else if (colorRow == "white"){
+                rowGenerateWhiteStart();
+                colorRow = "black";
+            }
+        }
+
+
+    </script>
+</body>
+</html>

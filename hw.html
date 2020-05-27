@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="modal-window">
+        <span class="exit">X</span>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, deleniti?
+    </div>
+
+    <div class="products">
+        <div class="product">
+            <p class="prod-name">Lorem, ipsum dolor.</p>
+            <p class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae eaque adipisci nisi perferendis necessitatibus quasi culpa assumenda fugiat tempora! Nemo neque repellat pariatur praesentium fugit exercitationem, voluptas iure libero accusantium magnam magni doloremque a fugiat aliquam eligendi inventore deleniti sit ut. Repellendus optio enim atque repellat voluptas recusandae saepe? Accusantium?</p>
+            <img src="https://i.pinimg.com/236x/5f/d8/be/5fd8bebce439f82ad4068653f8cd1c4e--butterfly-pictures-butterfly-wings.jpg" alt="" class="prod-img"><button class="more-info">MORE</button>
+        </div>
+        <div class="product">
+            <p class="prod-name">Lorem, ipsum dolor.</p>
+            <p class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae eaque adipisci nisi perferendis necessitatibus quasi culpa assumenda fugiat tempora! Nemo neque repellat pariatur praesentium fugit exercitationem, voluptas iure libero accusantium magnam magni doloremque a fugiat aliquam eligendi inventore deleniti sit ut. Repellendus optio enim atque repellat voluptas recusandae saepe? Accusantium?</p>
+            <img src="https://i.pinimg.com/236x/5f/d8/be/5fd8bebce439f82ad4068653f8cd1c4e--butterfly-pictures-butterfly-wings.jpg" alt="" class="prod-img"><button class="more-info">MORE</button>
+        </div>
+        <div class="product">
+            <p class="prod-name">Lorem, ipsum dolor.</p>
+            <p class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae eaque adipisci nisi perferendis necessitatibus quasi culpa assumenda fugiat tempora! Nemo neque repellat pariatur praesentium fugit exercitationem, voluptas iure libero accusantium magnam magni doloremque a fugiat aliquam eligendi inventore deleniti sit ut. Repellendus optio enim atque repellat voluptas recusandae saepe? Accusantium?</p>
+            <img src="https://i.pinimg.com/236x/5f/d8/be/5fd8bebce439f82ad4068653f8cd1c4e--butterfly-pictures-butterfly-wings.jpg" alt="" class="prod-img"><button class="more-info">MORE</button>
+        </div>
+    </div>
+    <script>
+        "use strict";
+      
+        // Task 1
+        let timeoutID;
+        let modal = document.querySelector(".modal-window");
+        document.addEventListener('DOMContentLoaded',function(){
+            setTimeout(changeStyle, 2000);
+        });
+        function changeStyle(){
+            modal.style.display = "block";
+
+        }
+
+        let exit = modal.querySelector(".exit");
+        exit.addEventListener('click', function(){
+            modal.style.display = "none";
+        });
+
+
+        // Task 2
+
+        let products = document.querySelector(".products");
+        products.addEventListener("click", clickBtn);
+
+        function clickBtn(event){
+            let target = event.target.parentNode;
+            let targetBtn = event.target;
+            if(targetBtn == target.querySelector(".more-info")){
+                if(target.querySelector(".prod-img").style.display == "none" && target.querySelector(".more-info").textContent == "Close" && target.querySelector(".desc").style.display == "block"){
+                    target.querySelector(".prod-img").style.display = "block";
+                    target.querySelector(".more-info").textContent = "MORE"
+                    target.querySelector(".desc").style.display = "none";
+                } else {
+                    target.querySelector(".prod-img").style.display = "none";
+                    target.querySelector(".more-info").textContent = "Close"
+                    target.querySelector(".desc").style.display = "block";
+                }   
+            }
+
+        }
+        
+
+
+       
+        
+    </script>
+</body>
+</html>
