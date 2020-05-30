@@ -1,0 +1,265 @@
+
+.container{
+    margin: 0 auto;
+    width: 1600px;
+    position: relative;
+}
+
+.header{
+    padding: 30px;
+    box-sizing: border-box;
+    text-align: end;
+    margin: 0 auto;
+    width: 1560px;
+}
+
+.basket-window{
+    display: none;
+    border-radius: 10px;
+    background-color: rgba(231, 210, 171, 0.95);
+    position: absolute;
+    z-index: 9;
+    left: 500px;
+    width: 750px;
+}
+
+.up-basket{
+    padding-left: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.close-basket{
+    cursor: pointer;
+    margin: 0 0 34px 289px;
+    font-size: 26px;
+}
+
+.basket-h2{
+    text-align: center;
+}
+
+.header-basket{
+    display: flex;
+}
+
+.procts-name-in-basket{
+    font-size: 23px;
+    margin: 10px 570px 0 30px;
+
+}
+
+.id-el{
+    padding: 22px 7px 0 0;
+}
+
+.id-el:after{
+    content: ".";
+}
+
+.products-price{
+    margin: 10px 0 0 0;
+    font-size: 23px;
+}
+
+.product-basket{    
+    display: flex;
+    font-size: 23px;
+    padding: 0 20px;
+    border-bottom: 1px solid rgb(122, 121, 121) ;
+}
+
+.product-basket:last-child{
+    border: none;
+}
+
+.products-img-for-buing{
+    display: block;
+    width: 60px;
+    margin: 10px 470px 10px 20px;
+}
+
+.product-basket-price{
+    font-size: 23px;
+}
+
+.u-need-pay{
+    display: flex;
+    font-size: 23px;
+    justify-content: space-between;
+}
+
+.sum-price{
+    margin: 0 0 0 30px;
+}
+
+.sum{
+    margin: 0 30px 0 0;
+}
+
+.pay{
+    cursor: pointer;
+    margin: 50px 30px 30px 30px;
+    font-size: 23px;
+}
+
+.clear-basket{
+    cursor: pointer;
+    font-size: 23px;
+}
+
+
+.products{
+    margin: 0 auto 300px auto;
+    display: flex;
+    width: 1560px;
+}
+
+.product{
+    font-size: 24px;
+    text-align: center;
+    width: 420px;
+    margin: 0 60px 0 0;
+}
+
+.price:after{
+    content: "\0024";
+}
+
+.sum:after{
+    content: "\0024";
+}
+
+.product-img{
+    width: 310px;
+}
+
+.basket{
+    cursor: pointer;
+}
+
+.btn-buy{
+    cursor: pointer;
+    font-size: 40px;
+}
+
+
+
+.slider{
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 800px;
+    height: 500px;
+    display: flex;
+    transition:  0.6s ease;
+}
+
+.margin-item-right{
+    transition:  0.6s ease;
+    margin-left: -800px;
+}
+
+.margin-item-left{
+    transition:  0.6s ease;
+    margin-left: 800px;
+}
+
+.slider-item{
+    position: absolute;
+    transition:  0.6s ease;
+    width: 800px;
+    height: 500px;
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 200px 0 0 0;
+    box-sizing: border-box;
+    color: #fff;
+    text-align: center;
+    font-size: 50px;
+}
+.img1{
+    left: 0;
+    transition:  0.6s ease;
+    background-color: blue;
+}
+
+.img2{
+    left: 800px;
+    transition: 0.6s ease;
+    background-color: chartreuse;
+}
+
+.img3{
+    left: 800px;
+    transition: 0.6s ease;
+    background-color: chocolate;
+}
+
+.control-right{
+    cursor: pointer;
+    position: absolute;
+    left: 730px;
+    z-index: 3;
+    align-self: center;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.control-right:after{
+    position: absolute;
+    top: 10px;
+    width: 30px;
+    height: 30px;
+    content: "";
+    border-top: 1px solid #fff;
+    border-right: 1px solid #fff;
+    transform: rotate(45deg);
+}
+
+.control-left{
+    cursor: pointer;
+    position: absolute;
+    left: 20px;
+    z-index: 3;
+    align-self: center;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.control-left:after{
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    width: 30px;
+    height: 30px;
+    content: "";
+    border-bottom: 1px solid #fff;
+    border-left: 1px solid #fff;
+    transform: rotate(45deg);
+}
+
+.control-right:hover{
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+.control-right:hover:after{
+    content: "";
+    border-top: 1px solid rgb(187, 185, 185);
+    border-right: 1px solid rgb(187, 185, 185);
+}
+
+.control-left:hover{
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+.control-left:hover:after{
+    content: "";
+    border-bottom: 1px solid rgb(187, 185, 185);
+    border-left: 1px solid rgb(187, 185, 185);
+    transform: rotate(45deg);
+}
+
