@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <button class="basket">
+            <img src="https://img2.freepng.ru/20180624/fll/kisspng-computer-icons-shopping-cart-product-icon-5b3032cd30f856.5230875015298853892006.jpg" width="60" alt="">
+        </button>
+    </header>
+
+    <div class="basket-window">
+        <div class="up-basket">
+            <h2 class="basket-h2">Корзина</h2>
+            <p class="close-basket">X</p>
+        </div>
+        <hr>
+        <div class="header-basket">
+            <p class="procts-name-in-basket">Товары</p>
+            <p class="products-price">Цена</p>
+        </div>
+        <hr>
+        <div class="products-in-basket">
+        </div>
+        <hr>
+        <div class="u-need-pay">
+            <p class="sum-price">Итого:</p>
+            <p class="sum">0</p>
+        </div>
+        <button class="pay">Оплатить</button>
+        <button class="clear-basket">Очистить корзину</button>
+
+    </div>
+
+    <div class="products">
+        <div class="product product1">
+            <p class="product-name">Product№1</p>
+            <img src="https://avatars.mds.yandex.net/get-zen_doc/1873182/pub_5daf2e2d6f5f6f00ae7b80f6_5daf2efce6cb9b00b112cb22/scale_1200" alt="" class="product-img">
+            <p class="droduct-desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo veritatis voluptatibus eius minus doloribus dicta, et facilis consectetur explicabo repudiandae aspernatur? Consequatur quisquam, totam nulla nam optio magnam maxime pariatur corporis officiis voluptatum autem dignissimos perferendis deleniti fuga at obcaecati.</p>
+            <p class="price">500</p>
+            <button class="btn-buy">BUY</button>
+        </div>
+        <div class="product product2">
+            <p class="product-name">Product№2</p>
+            <img src="https://forkidsandmum.ru/pictures/1025055982.jpg" alt="" width="310" class="product-img">
+            <p class="droduct-desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo veritatis voluptatibus eius minus doloribus dicta, et facilis consectetur explicabo repudiandae aspernatur? Consequatur quisquam, totam nulla nam optio magnam maxime pariatur corporis officiis voluptatum autem dignissimos perferendis deleniti fuga at obcaecati.</p>
+            <p class="price">200</p>
+            <button class="btn-buy">BUY</button>
+        </div>
+        <div class="product product3">
+            <p class="product-name">Product№3</p>
+            <img src="https://tailandika.ru/upload/iblock/541/541affd0a14c7e61d8a07fb57d86c031.jpg" alt="" width="310" class="product-img">
+            <p class="droduct-desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo veritatis voluptatibus eius minus doloribus dicta, et facilis consectetur explicabo repudiandae aspernatur? Consequatur quisquam, totam nulla nam optio magnam maxime pariatur corporis officiis voluptatum autem dignissimos perferendis deleniti fuga at obcaecati.</p>
+            <p class="price">150</p>
+            <button class="btn-buy">BUY</button>
+        </div>
+        <div class="product product4">
+            <p class="product-name">Product№4</p>
+            <img src="https://russfort.ru/upload/information_system_20/1/6/7/item_167/item_167.jpg" alt="" width="310" class="product-img">
+            <p class="droduct-desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo veritatis voluptatibus eius minus doloribus dicta, et facilis consectetur explicabo repudiandae aspernatur? Consequatur quisquam, totam nulla nam optio magnam maxime pariatur corporis officiis voluptatum autem dignissimos perferendis deleniti fuga at obcaecati.</p>
+            <p class="price">20</p>
+            <button class="btn-buy">BUY</button>
+        </div>
+    </div>
+    <div class="slider">
+        <div class="arrow-control control-left"></div>
+        <div class="img1 slider-item ">1</div>
+        <div class="img2 slider-item">2</div>
+        <div class="img3 slider-item">3</div>
+        <div class="arrow-control control-right"></div>
+    </div>
+</div>
+    
+    <script>
+        "use strict";
+
+    //Slider
+        let slider = document.querySelector(".slider");
+        let sliderControls = document.querySelectorAll(".arrow-control");
+        let leftArrow = document.querySelector(".control-left");
+        let rightArrow = document.querySelector(".control-right");
+        let sliderItems = document.querySelectorAll(".slider-item");
+
+        let sliderItemsArr = [];
+        sliderItems.forEach(function(sliderItem){
+            sliderItemsArr.push(sliderItem);
+        });
+
+        function leftClick(){
+            leftArrow.addEventListener('click', function(){
+                direction = "left";
+                if(i == 0){
+                    console.log(i);
+                    return ;
+                } else {
+                    i--;
+                    getSlide(i);
+                    console.log(i);
+                    return ;
+                }
+            });  
+        }
+
+        function rightClick(){
+            rightArrow.addEventListener('click', function(){
+                direction = "right";
+                if(i == sliderItemsArr.length - 1){
+                    console.log(i);
+                    return ;
+                } else {
+                    i++;
+                    getSlide(i);
+                    console.log(i);
+                    return ;
+                }
+            });
+        }
+
+        function getSlide(i){
+            if(direction == "right" && i > 0){
+                sliderItemsArr[i].style.left = "0"
+                sliderItemsArr[i - 1].style.left = "-800px"
+            } else if (direction == "right" && i == 0){
+                return;
+            } else if (direction == "left" && i == sliderItemsArr.length - 1){
+                return;
+            } else if(direction == "left" && i >= 0){
+                sliderItemsArr[i].style.left = "0"
+                sliderItemsArr[i + 1].style.left = "800px"
+            }
+        }
+
+        let breakPoint = true;
+        let direction = "";
+        let i = 0;
+        rightClick();
+        leftClick();
+
+
+    //Slider
+    </script>
+
+    <!-- basket -->
+    <script src="app.js"></script>
+    <!-- basket -->
+</body>
+</html>
