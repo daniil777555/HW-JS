@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+        let MillonGame = {
+
+            questionsAndAnswers:[
+            this.questionAndAnswer1 = {
+                question: "5 + 4:",
+                rigtAnswer:1,
+                answers: ["1. 9", "\n 2. 2", "\n 3. 11", "\n 4. 345"],
+            },
+            this.questionAndAnswer2 = {
+                question: "Зимой и летом одним цветом:",
+                rigtAnswer:2,
+                answers:["1. Кактус", "\n 2. Елка", "\n 3. Карандаш", "\n 4. Земля"],
+            },
+            this.questionAndAnswer3 = {
+                question: "Вист груша нельзя скушать:",
+                rigtAnswer: 2,
+                answers: ["1. Боксерская груша", "\n 2. Лампа", "\n 3. Телефон", "\n 4. Груша"],
+            },
+            this.questionAndAnswer4 = {
+                question:"Музыкант, певец, рассказчик а всего труба да ящик:",
+                rigtAnswer: 3,
+                answers: ["1. Барабан", "\n 2. Музыкант", "\n 3. Громофон", "\n 4. Трубец"],
+            },
+            this.questionAndAnswer5 = {
+                question:"На одной ноге стоит, в воду пристально глядит. Тычет клювом наугад - ищет в речке лягушат:",
+                rigtAnswer: 2,
+                answers: ["1. Курица", "\n 2. Цапля", "\n 3. Единорог", "\n 4. Сова"],
+            },
+            ],
+            getQuestionAndAnswer: function(){
+                    for(let i = 0; i < this.questionsAndAnswers.length; i++){
+                        if(gameBrake == false){
+                            break;
+                        }
+                        var userInput = prompt(this.questionsAndAnswers[i].question + '\n' + this.questionsAndAnswers[i].answers);
+                        MillonGame.checkUserAnswer(userInput, i);
+                        this.wantToContinue(i);
+                    }
+                    this.playAgain();
+                
+            },
+            checkUserAnswer: function(userInput, i){
+                 //эта часть проверяет правильность ответа
+                        if(this.questionsAndAnswers[i].rigtAnswer == userInput && wrongAns < 2){
+                            rigtAns++;
+                            score *= 10;
+                            alert("Вы угадали, ваш счет умножен на 10 и равен: " + score);
+                            return;
+                        } else{
+                            ++wrongAns;
+                            score /= 4;
+                            alert("Вы не угадали, ваш счет уменьшин на 4 и равен: " + parseInt(score));
+                        } 
+                        //эта часть завершает работу 
+                        if(wrongAns >= 2){
+                            alert("Вы все проиграли.");
+                            return gameBrake = false;//Я не знал как завершить работу функции в случае проигрыша, и по этому создал эту переменную, которая возвращает false в функцию getQuestionAndAnswer, когда нужно закончит работу, если не нужно заканчивать то она равна true и все работает дальше. 
+                        }
+            },
+
+            wantToContinue: function(i){
+                //эта часть завершает работу, когда все вопросы заданы или если неправильных ответов больше двух, без этого > wrongAns >= 2, после оповещения о проигрыше программа предлагает закончить и забрать выигрыш, либо продолжить.
+                if(wrongAns >= 2 || i >= this.questionsAndAnswers.length - 1){
+                    return gameBrake = false;//Не уверен что правильно понял, но это работает потому, что пока gameBrake = true, логическая проверка if в первой функцции где используется break, не работает но когда я переопредаляю значение на false, проверка выдает истину срабатывает break и работа останавливается.
+                }
+                //эта часть предлагает продолжить или закончить между вопросами
+                exitOfGame = confirm("Хотите продолжить, или может лучше забрать выйгрыш. Да - продолжить, Нет - закончить");
+                if(exitOfGame == false){
+                    alert("Вы закончили и забрали выигрыш " + score);
+                    return gameBrake = false;
+                }
+            },
+
+
+            playAgain: function(){
+                //эта часть предлагает сыграть снова
+                exitOfGame = confirm("Хотите сыграть снова?");
+                if(exitOfGame == true){// вы можете заметить, что переменная exitOfGame изначальна определана как истина(true), но эта часть почему-то все равно работает.
+                    rigtAns = 0;
+                    wrongAns = 0;
+                    score = 100;//здесь я переопределил эти переменные потому, что значения из прошлого раунда сохранились.
+                    gameBrake = true;
+                    MillonGame.getQuestionAndAnswer();
+                } else {
+                    return gameBrake = false;// здесь используется тот же принцип, что я описывал выше
+                }
+            }
+            
+        };
+        alert("Ваш начальный счет равен 100, если вы 2 раза не правильно ответите, вы проиграете");
+        let exitOfGame = true;
+        let gameBrake = true;
+        let rigtAns = 0;
+        let wrongAns = 0;
+        let score =  100;
+        MillonGame.getQuestionAndAnswer();
+        console.log(MillonGame)
+
+    </script>
+</body>
+</html>

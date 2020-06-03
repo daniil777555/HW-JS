@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style-chess.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="column-num"></div>
+        <div class="chess-fild"></div>
+        <div class="string-letters"></div>
+    </div>
+    <script>
+        "use strict";
+
+//Я думаю вы порекомендуете сделать все это объектом, и если я прав то, чем лучше будет объект, а не мой вариант?
+
+        //генерирует буквенное обозначение столбцов
+        function createDivLetters(i){
+            let string = document.querySelector(".string-letters");
+            let stringLetters = document.createElement('div');
+            stringLetters.className = "div-letters";
+            stringLetters.innerText = i;
+            string.prepend(stringLetters);
+
+        }
+        //генерирует числовое обозначение строк
+        function createDivNum(i){
+            let column = document.querySelector(".column-num");
+            let columnNum = document.createElement('div');
+            columnNum.className = "div-num";
+            columnNum.innerText = i;
+            column.prepend(columnNum);
+
+        }
+
+        function createBlackDiv(){
+            let fild = document.querySelector(".chess-fild");
+            let blackDiv = document.createElement('div');
+            blackDiv.className = "black figure-item"//сделал 2 класса чтобы в следующей функции использовать все клетки, а не разделять на белые и черные 
+            fild.prepend(blackDiv);
+        }
+
+        function createWhiteDiv(){
+            let fild = document.querySelector(".chess-fild");
+            let whiteDiv = document.createElement('div');
+            whiteDiv.className = "white figure-item";
+            fild.prepend(whiteDiv);
+        }
+
+        //создает фигурки
+        function createFigure(j){
+            let figures = {
+                blackFigures: [ //в массиве все восемь фигур, хотя 3 из них повторяются, я не придумал как взять из массива повторяющиеся элименты, и по-этому записал все
+                    "img/black-ladiy.png",
+                    "img/black-horse.png",
+                    "img/black-elefant.png",
+                    "img/black-ferz.png",
+                    "img/black-king.png",
+                    "img/black-elefant.png",
+                    "img/black-horse.png",
+                    "img/black-ladiy.png",
+                ],
+                whiteFigures: [
+                    "img/white-ladiy.png",
+                    "img/white-horse.png",
+                    "img/white-elefant.png",
+                    "img/white-ferz.png",
+                    "img/white-king.png",
+                    "img/white-elefant.png",
+                    "img/white-horse.png",
+                    "img/white-ladiy.png",
+                ],
+            };
+            if(j == 1){//j это номер строки взято из цикла генерации строк. Это работает по принципу поиска строки, нахождение всех элементов, преребор их, и только первым 8(так как без этого заполнятся все предыдущие клетки) на этой строке добавятся фигурки.
+                let figureItems = document.querySelectorAll(".figure-item")
+                    figureItems.forEach(function(figureItem, key){
+                        if(key < 8){
+                            let whiteFigure = new Image;
+                            whiteFigure.className = "chess-figure"
+                            whiteFigure.src = "img/white-peshka.png"
+                            figureItem.prepend(whiteFigure);
+                        }
+                    })
+            }
+            if(j == 6){
+                let figureItems = document.querySelectorAll(".figure-item")
+                    figureItems.forEach(function(figureItem, key){
+                        if(key < 8){
+                            let blackFigure = new Image;
+                            blackFigure.className = "chess-figure"
+                            blackFigure.src = "img/black-peshka.png"
+                            figureItem.prepend(blackFigure);
+                        }
+                    })
+            }
+
+            if(j == 0){
+                let figureItems = document.querySelectorAll(".figure-item")
+                figureItems.forEach(function(figureItem, key){
+                    if(key < 8){
+                        let whiteFigure = new Image;
+                        whiteFigure.className = "chess-figure-big";
+                        whiteFigure.src = figures.whiteFigures[key];
+                        figureItem.prepend(whiteFigure);
+                    }   
+                })    
+            }
+
+            if(j == 7){
+                let figureItems = document.querySelectorAll(".figure-item")
+                figureItems.forEach(function(figureItem, key){
+                    if(key < 8){
+                        let blackFigure = new Image;
+                        blackFigure.className = "chess-figure-big";
+                        blackFigure.src = figures.blackFigures[key];
+                        figureItem.prepend(blackFigure);
+                    }   
+                })   
+            }
+        }
+
+        /*
+        Эта функци генерирует строку начиная с белой клетки.
+        */
+        function rowGenerateWhiteStart(){
+            for(let i = 0; i < 8; i++){
+                if(i % 2 == 0){
+                    createBlackDiv();
+                } else{
+                    createWhiteDiv();
+                }
+            }
+        }
+        /*
+        Эта функци генерирует строку начиная с черной клетки.
+        */
+        function rowGenerateBlackStart(){
+            for(let i = 0; i < 8; i++){
+                if(i % 2 == 0){
+                    createWhiteDiv();
+                } else{
+                    createBlackDiv();
+                }
+            }
+        }
+
+        for(let i = 7; i >= 0; i--){
+            let lettersArr = ["A", "B", "C", "D", "E", "F", "G", "H"];
+            createDivLetters(lettersArr[i]);
+        }
+
+        for(let i = 1; i <= 8; i++){
+            createDivNum(i);
+        }
+
+        //Этот цикл будет генерировать поле, используя функии генерирования строки
+        let colorRow = "black";
+        for(let j = 0; j < 8; j++){  
+            if(colorRow == "black"){
+                rowGenerateBlackStart();
+                colorRow = "white";
+            } else if (colorRow == "white"){
+                rowGenerateWhiteStart();
+                colorRow = "black";
+            }
+            createFigure(j);
+        }
+
+
+    </script>
+</body>
+</html>
