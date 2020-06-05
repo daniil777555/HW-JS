@@ -1,0 +1,81 @@
+.container{
+    width: 900px;
+    margin: auto;
+}
+
+.gaming-fild{
+    margin: auto;
+    width: 700px;
+    height: 300px;
+    border: 8px ridge rgb(90, 44, 6);   
+    border-image-slice: 1;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    background: rgb(26,121,9);
+    background: linear-gradient(180deg, rgba(26,121,9,1) 35%, rgb(73, 190, 63) 100%);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.diller-cards{
+    display: flex;
+    padding: 5px 0 5px 7px;
+    margin: 20px 0 0 0;
+    font-size: 25px;
+    min-width: 80px;
+    height: 50px;
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+
+.player-cards{
+    display: flex;
+    padding: 5px 0 5px 7px;
+    margin: 150px 0 0 0;
+    font-size: 25px;
+    min-width: 80px;
+    height: 50px;
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+
+.player-cards-position{
+    animation: move 1s;
+    width: 30px;
+    margin-right: 7px;
+    height: 40px;
+    font-size: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #000;
+    box-sizing: border-box;
+    text-align: center;
+    padding-top: 8px;
+
+}
+
+.diller-cards-position{
+    animation: move 1s;
+    width: 30px;
+    margin-right: 7px;
+    height: 40px;
+    font-size: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #000;
+    box-sizing: border-box;
+    text-align: center;
+    padding-top: 8px;
+
+}
+
+@keyframes move {
+    from{
+        margin-top: -300px;
+    }
+    to {
+        margin-top: 0;
+    }
+}
+
