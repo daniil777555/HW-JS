@@ -7,7 +7,8 @@
     margin: auto;
     width: 700px;
     height: 300px;
-    border: 2px solid #000;
+    border: 8px ridge rgb(90, 44, 6);   
+    border-image-slice: 1;
     border-bottom-right-radius: 50%;
     border-bottom-left-radius: 50%;
     background: rgb(26,121,9);
@@ -40,6 +41,7 @@
 }
 
 .player-cards-position{
+    animation: move 1s;
     width: 30px;
     margin-right: 7px;
     height: 40px;
@@ -54,6 +56,7 @@
 }
 
 .diller-cards-position{
+    animation: move 1s;
     width: 30px;
     margin-right: 7px;
     height: 40px;
@@ -66,3 +69,13 @@
     padding-top: 8px;
 
 }
+
+@keyframes move {
+    from{
+        margin-top: -300px;
+    }
+    to {
+        margin-top: 0;
+    }
+}
+

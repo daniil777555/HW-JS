@@ -25,10 +25,10 @@ class Game {
     }
 
     notGet(){
-        this.btnNotGet.addEventListener('click', this.cardsArrs.bind(this));
+        this.btnNotGet.addEventListener('click', this.endGame.bind(this));
     }
 
-    cardsArrs(){
+    endGame(){
         while(this.getSumCard(this.dillerCardsArr) < 19){
             this.getCardsDiller();
         }
@@ -121,7 +121,6 @@ class Game {
     }
 
     getCardsDiller(){
-
         this.dillerCardsArr.push(this.randomCards())
         for(let i = this.dillerCardsArr.length - 1;;){
             let div = document.createElement("div")
